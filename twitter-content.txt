@@ -1,0 +1,13 @@
+Title: meng shao on X: "针对 OpenAI Codex 最新推出的 Subagents 功能，Github 上最新出现了它的 awesome 系列项目“Awesome Codex Subagents”，收录 136+ 个专门针对软件开发各环节设计的 AI 助手，覆盖 10 大技术领域。项目采用 Codex 原生的 .toml 配置格式，可直接集成到 Codex 工作流中。
+https://t.co/f7Aq4gDjGc https://t.co/UoV8HLY2gB" / X
+
+URL Source: https://x.com/shao__meng/status/2034229342444962007
+
+Markdown Content:
+## Post
+
+## Conversation
+
+针对 OpenAI Codex 最新推出的 Subagents 功能，Github 上最新出现了它的 awesome 系列项目“Awesome Codex Subagents”，收录 136+ 个专门针对软件开发各环节设计的 AI 助手，覆盖 10 大技术领域。项目采用 Codex 原生的 .toml 配置格式，可直接集成到 Codex 工作流中。 [github.com/VoltAgent/awes](https://t.co/e6iCRWao7Z)重温一下什么是 Subagent？ Subagents 是领域专精、任务单一的 AI 协作者： · 独立上下文 — 每个 Subagent 拥有隔离的上下文窗口，避免任务间信息污染 · 显式委派 — 不会自动触发，需用户在提示词中明确指定调用哪个 Agent · 模型路由 — 根据任务复杂度自动选择合适模型 · 沙箱分级 — 审计类 Agent 为只读模式，开发类 Agent 可写入工作区 智能模型路由策略 gpt-5.4 — 用于深度推理场景 · 架构评审、安全审计、金融逻辑等复杂任务 · 示例：security-auditor、architect-reviewer、fintech-engineer gpt-5.3-codex-spark — 用于快速扫描场景 · 信息检索、轻量级研究、快速合成 · 示例：search-specialist、docs-researcher、agent-installer 沙箱模式设计 · Read-only 模式 — 审查类、审计类代理（如代码审查员、安全审计员），只分析不修改 · Workspace-write 模式 — 开发类、工程类代理（如后端开发者、DevOps 工程师），可创建和修改文件 -- 10 大类别全景 --  01. 核心开发（11 个） 前端/后端/全栈开发者、UI 设计师、微服务架构师、API 设计师、Electron 桌面应用专家、WebSocket 实时通信工程师等 02. 语言专家（24 个） Python/TypeScript/Rust/Go/Java/C++/C#/Kotlin/Swift/PHP/Elixir 等语言专精 Agent，涵盖各主流框架（React、Vue、Angular、Django、Laravel、Rails、Spring Boot、Next.js 等） 03. 基础设施（15 个） DevOps 工程师、K8s 专家、Terraform/Terragrunt 工程师、Docker 专家、Azure/GCP/AWS 架构师、SRE、网络安全工程师、事件响应专家等 04. 质量与安全（16 个） 安全审计员、代码审查员、渗透测试员、性能工程师、混沌工程专家、可访问性测试员、合规审计员、架构评审员等 05. 数据与 AI（12 个） ML 工程师、LLM 架构师、MLOps 工程师、数据工程师、数据科学家、NLP 工程师、PostgreSQL 专家、Prompt 工程师等 06. 开发者体验（13 个） Git 工作流管理、文档工程师、重构专家、MCP 开发者、构建系统工程师、依赖管理专家、CLI 工具开发者、Slack 平台专家等 07. 专业领域（12 个） 区块链开发、游戏开发、IoT 系统、支付集成、量化分析、风险管控、SEO 优化、Microsoft 365 管理、嵌入式系统等 08. 业务与产品（11 个） 产品经理、业务分析师、技术写作、UX 研究员、内容营销、客户成功、项目管理、Scrum Master、销售工程师、法律顾问等 09. 元与编排（12 个） 多 Agent 协调器、工作流编排器、任务分发器、上下文管理器、性能监控器、错误协调器、知识合成器等 10. 研究与分析（7 个） 竞品分析师、市场研究员、趋势分析师、搜索专家、文档研究员、数据研究员、综合研究分析师等 最佳适用场景 · 大型项目需要多人协作式 AI 工作流 · 复杂任务需多 Agent 并行处理（如同时审查代码正确性、安全性和文档一致性） · 团队希望标准化常见的开发任务（PR 审查、Bug 调查、重构规划）
+
+[![Image 1: Image](https://pbs.twimg.com/media/HDsIwNfaoAAaO-I?format=jpg&name=small)](https://x.com/shao__meng/status/2034229342444962007/photo/1)
