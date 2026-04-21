@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Kimi K2.6</title>
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+/* BODY = 统一字号基础，所有内容继承 */
+html,body{
+  width:1920px;height:1080px;
+  font-size:200px;
+  font-family:'Noto Sans SC','WenQuanYi Zen Hei','PingFang SC',sans-serif;
+  color:#ffffff;
+  overflow:hidden;
+}
+/* 通用 */
+.scene{
+  position:fixed;top:0;left:0;width:1920px;height:1080px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.h1{font-size:1em;font-weight:900;letter-spacing:-0.01em;line-height:1.05;
+    background:linear-gradient(135deg,#00d6d6,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.h2{font-size:0.8em;font-weight:700;letter-spacing:-0.01em;line-height:1.1;
+    background:linear-gradient(135deg,#00d6d6,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.h3{font-size:0.45em;font-weight:400;color:rgba(255,255,255,0.55);line-height:1.4;margin-top:0.3em;}
+.tag{display:inline-block;font-size:0.35em;padding:0.18em 0.5em;border-radius:0.15em;margin:0.08em;}
+.grid-bg{
+  position:fixed;top:0;left:0;width:1920px;height:1080px;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,214,214,0.04)1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,214,214,0.04)1px,transparent 1px);
+  background-size:80px 80px;
+}
+.top-bar{position:fixed;top:0;left:0;right:0;height:4px;z-index:200;
+  background:linear-gradient(90deg,#00d6d6,#6c3aff,#ff3a8c);}
+.time-display{position:fixed;top:36px;right:44px;z-index:200;font-size:0.2em;color:rgba(255,255,255,0.3);
+  font-family:'Courier New',monospace;letter-spacing:2px;}
+.footer{position:fixed;bottom:32px;left:44px;z-index:200;font-size:0.2em;color:rgba(255,255,255,0.22);letter-spacing:0.5px;}
+.logo-mark{position:fixed;bottom:32px;right:44px;z-index:200;font-size:0.2em;color:#00d6d6;letter-spacing:1px;}
+/* 指标卡片 */
+.metrics{display:flex;gap:0.3em;justify-content:center;flex-wrap:wrap;}
+.m{background:rgba(0,214,214,0.07);border:1px solid rgba(0,214,214,0.2);border-radius:0.2em;
+   padding:0.3em 0.5em;text-align:center;min-width:3.5em;}
+.mn{font-size:0.8em;font-weight:900;color:#00d6d6;line-height:1;}
+.mu{font-size:0.35em;color:rgba(0,214,214,0.8);margin-top:0.08em;}
+.ml{font-size:0.3em;color:rgba(255,255,255,0.7);margin-top:0.06em;}
+/* 代码块 */
+.cb{background:rgba(0,0,0,0.6);border:1px solid rgba(0,214,214,0.25);border-radius:0.15em;
+    padding:0.35em 0.6em;font-size:0.45em;font-family:'Courier New',monospace;line-height:1.9;
+    text-align:left;min-width:7em;}
+.cb div{margin-bottom:0.12em;}
+.cn{color:rgba(0,214,214,0.5);margin-right:0.3em;}
+/* 平台标签 */
+.pills{display:flex;gap:0.15em;justify-content:center;flex-wrap:wrap;}
+.pill{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:0.1em;
+      padding:0.2em 0.4em;font-size:0.38em;color:#e0e6f0;}
+/* 架构图 */
+.ad{display:flex;flex-direction:column;gap:0.15em;align-items:center;}
+.ar{display:flex;gap:0.2em;}
+.an{background:rgba(0,0,0,0.5);border:1px solid rgba(0,214,214,0.3);border-radius:0.1em;
+    padding:0.2em 0.4em;font-size:0.4em;color:#e0e6f0;text-align:center;min-width:2.8em;}
+.an.hl{border-color:rgba(168,85,247,0.6);background:rgba(108,58,255,0.1);}
+.ac{font-size:0.38em;color:rgba(0,214,214,0.5);text-align:center;padding:0.1em;}
+/* 表格 */
+.tbl{width:100%;max-width:12em;border-collapse:collapse;margin:0 auto;}
+.tbl td{padding:0.2em 0.4em;text-align:center;font-size:0.38em;color:#e0e6f0;
+        border-top:1px solid rgba(255,255,255,0.08);}
+.tbl .w{color:#00d6d6;font-weight:700;}
+.tbl .s{color:#a855f7;}
+/* 装饰 orb */
+.orb{position:absolute;border-radius:50%;pointer-events:none;}
+/* 分隔线 */
+.div{width:1.5em;height:3px;background:linear-gradient(90deg,#00d6d6,#6c3aff);
+     border-radius:2px;margin:0.25em auto;}
+</style>
+</head>
+<body data-composition-id="k26" data-width="1920" data-height="1080">
+
+<div class="grid-bg"></div>
+<div class="top-bar"></div>
+<div class="time-display">00:00 / 03:14</div>
+<div class="footer">Kimi K2.6 · Moonshot AI · 2026</div>
+<div class="logo-mark">MOONSHOT AI</div>
+
+<!-- SCENE 1: 开场 0-15s -->
+<div class="clip scene" data-start="0" data-duration="15">
+  <div class="orb" style="width:900px;height:900px;background:radial-gradient(circle,#00d6d6,transparent 70%);
+        top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.18;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h1" style="font-size:1.3em;">KIMI K2.6</div>
+    <div class="div"></div>
+    <div class="h3">月之暗面 · 开源编程模型新标杆</div>
+    <div style="margin-top:0.4em;">
+      <span class="tag" style="background:rgba(0,214,214,0.12);border:1px solid rgba(0,214,214,0.3);color:#00d6d6;">开源权重</span>
+      <span class="tag" style="background:rgba(108,58,255,0.12);border:1px solid rgba(108,58,255,0.3);color:#a855f7;">长周期编程</span>
+      <span class="tag" style="background:rgba(255,58,140,0.12);border:1px solid rgba(255,58,140,0.3);color:#ff3a8c;">Agent Swarm</span>
+      <span class="tag" style="background:rgba(255,140,62,0.12);border:1px solid rgba(255,140,62,0.3);color:#ff8c3e;">多模态</span>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 2: 模型架构 15-29s -->
+<div class="clip scene" data-start="15" data-duration="14">
+  <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,#6c3aff,transparent 70%);
+        top:-100px;right:-100px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">模型架构</div>
+    <div class="div"></div>
+    <div class="cb">
+      <div><span class="cn">01</span>Moonshot AI · Kimi K2.6</div>
+      <div><span class="cn">02</span>64 × Safetensor 分片权重</div>
+      <div><span class="cn">03</span>ModelScope + HuggingFace</div>
+      <div><span class="cn">04</span>KimiK25ForConditionalGeneration</div>
+      <div><span class="cn">05</span>PyTorch + Safetensors 完全开源</div>
+    </div>
+    <div class="h3" style="margin-top:0.35em;">完全开源，自由下载与部署</div>
+  </div>
+</div>
+
+<!-- SCENE 3: 长周期任务 29-44s -->
+<div class="clip scene" data-start="29" data-duration="15">
+  <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,#00d6d6,transparent 70%);
+        bottom:-200px;left:-100px;opacity:0.15;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">长周期任务执行</div>
+    <div class="div"></div>
+    <div class="metrics">
+      <div class="m"><div class="mn">12h+</div><div class="mu">持续运行</div><div class="ml">不间断执行</div></div>
+      <div class="m"><div class="mn">4000+</div><div class="mu">工具调用</div><div class="ml">全流程自主</div></div>
+      <div class="m"><div class="mn">3</div><div class="mu">编程语言</div><div class="ml">Py · Rs · Go</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 4: 交易所案例 44-63s -->
+<div class="clip scene" data-start="44" data-duration="19">
+  <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,#a855f7,transparent 70%);
+        top:-200px;right:-100px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">实测案例：交易所撮合引擎</div>
+    <div class="div"></div>
+    <div class="metrics">
+      <div class="m"><div class="mn">185%</div><div class="mu">吞吐量提升</div><div class="ml">0.43→1.24 MT/s</div></div>
+      <div class="m"><div class="mn">133%</div><div class="mu">性能增长</div><div class="ml">1.23→2.86 MT/s</div></div>
+      <div class="m"><div class="mn">1000+</div><div class="mu">代码修改</div><div class="ml">13小时自主优化</div></div>
+    </div>
+    <div class="h3" style="margin-top:0.3em;">突破性能极限，超越 LM Studio 20%</div>
+  </div>
+</div>
+
+<!-- SCENE 5: Agent Swarm 63-77s -->
+<div class="clip scene" data-start="63" data-duration="14">
+  <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,#ff3a8c,transparent 70%);
+        top:-100px;left:-100px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">Agent Swarm</div>
+    <div class="div"></div>
+    <div class="h3">动态任务分解 · 异构智能体并行协作</div>
+    <div class="ad" style="margin-top:0.4em;">
+      <div class="ar">
+        <div class="an">搜索 Agent</div>
+        <div class="an hl">调度 Agent</div>
+        <div class="an">研究 Agent</div>
+      </div>
+      <div class="ac">▼ 并行执行</div>
+      <div class="ar">
+        <div class="an">写作 Agent</div>
+        <div class="an hl">分析 Agent</div>
+        <div class="an">代码 Agent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 6: 协作原理 77-93s -->
+<div class="clip scene" data-start="77" data-duration="16">
+  <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,#ff8c3e,transparent 70%);
+        bottom:-100px;right:-100px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">组合式协作原理</div>
+    <div class="div"></div>
+    <div class="cb">
+      <div><span class="cn">01</span>任务分解 → 异构子 Agent 生成</div>
+      <div><span class="cn">02</span>搜索 Agent：广度信息收集</div>
+      <div><span class="cn">03</span>研究 Agent：深度分析与推理</div>
+      <div><span class="cn">04</span>写作 Agent：多格式内容生成</div>
+      <div><span class="cn">05</span>统一协调 → 结果整合输出</div>
+      <div><span class="cn">06</span>支持 300 Agent 并行 · 4000+ 步骤</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 7: Benchmark 93-111s -->
+<div class="clip scene" data-start="93" data-duration="18">
+  <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,#00d6d6,transparent 70%);
+        top:-200px;left:-200px;opacity:0.15;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">Benchmark 表现</div>
+    <div class="div"></div>
+    <table class="tbl">
+      <tr><td>Terminal-Bench 2.0</td><td class="w">领先</td></tr>
+      <tr><td>SWE-Bench Pro</td><td class="w">领先</td></tr>
+      <tr><td>Humanity's Last Exam</td><td class="s">55.5%</td></tr>
+      <tr><td>Next.js Benchmark</td><td class="w">+50% 提升</td></tr>
+    </table>
+    <div class="h3" style="margin-top:0.3em;">多项指标超越顶级闭源模型</div>
+  </div>
+</div>
+
+<!-- SCENE 8: 视觉能力 111-126s -->
+<div class="clip scene" data-start="111" data-duration="15">
+  <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,#6c3aff,transparent 70%);
+        top:-200px;right:-200px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">视觉 Agent 能力</div>
+    <div class="div"></div>
+    <div class="metrics">
+      <div class="m"><div class="mn">98.4%</div><div class="mu">V* Benchmark</div><div class="ml">视觉导航</div></div>
+      <div class="m"><div class="mn">80.2%</div><div class="mu">MathVision</div><div class="ml">数学视觉推理</div></div>
+      <div class="m"><div class="mn">68.3%</div><div class="mu">MMMU-Pro</div><div class="ml">多模态理解</div></div>
+    </div>
+    <div class="h3" style="margin-top:0.3em;">深度图像理解 + 代码执行的多模态推理</div>
+  </div>
+</div>
+
+<!-- SCENE 9: 开源生态 126-141s -->
+<div class="clip scene" data-start="126" data-duration="15">
+  <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,#00d6d6,transparent 70%);
+        top:-100px;left:-100px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">开源生态</div>
+    <div class="div"></div>
+    <div class="pills">
+      <div class="pill">📦 ModelScope</div>
+      <div class="pill">🤗 HuggingFace</div>
+      <div class="pill">📄 技术报告</div>
+      <div class="pill">🔍 KVV 验证工具</div>
+    </div>
+    <div class="h3" style="margin-top:0.3em;">完整开源，可自由部署与研究</div>
+  </div>
+</div>
+
+<!-- SCENE 10: 部署方式 141-156s -->
+<div class="clip scene" data-start="141" data-duration="15">
+  <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,#a855f7,transparent 70%);
+        bottom:-200px;right:-100px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">多模式部署</div>
+    <div class="div"></div>
+    <div class="ad">
+      <div class="ar">
+        <div class="an">Moonshot API</div>
+        <div class="an">vLLM</div>
+        <div class="an">TGI</div>
+        <div class="an">SGLang</div>
+      </div>
+    </div>
+    <div class="h3" style="margin-top:0.3em;">灵活适配企业私有化与云端部署</div>
+  </div>
+</div>
+
+<!-- SCENE 11: 企业评价 156-174s -->
+<div class="clip scene" data-start="156" data-duration="18">
+  <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,#ff3a8c,transparent 70%);
+        top:-100px;right:-100px;opacity:0.2;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h2">企业用户实测评价</div>
+    <div class="div"></div>
+    <div class="pills">
+      <div class="pill">Baseten</div>
+      <div class="pill">Vercel</div>
+      <div class="pill">Together AI</div>
+    </div>
+    <div class="h3" style="margin-top:0.25em;">"比肩顶级闭源模型的可靠性" — Baseten<br>"Next.js 任务提升超 50%\" — Vercel</div>
+  </div>
+</div>
+
+<!-- SCENE 12: 结语 174-189s -->
+<div class="clip scene" data-start="174" data-duration="15">
+  <div class="orb" style="width:900px;height:900px;background:radial-gradient(circle,#00d6d6,transparent 70%);
+        top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.18;"></div>
+  <div style="text-align:center;position:relative;z-index:10;">
+    <div class="h1">KIMI K2.6</div>
+    <div class="div"></div>
+    <div class="h3">代码能力比肩顶级闭源模型<br>300 Agent 并行，重新定义 AI 编程边界</div>
+    <div style="margin-top:0.4em;">
+      <span class="tag" style="background:rgba(0,214,214,0.12);border:1px solid rgba(0,214,214,0.3);color:#00d6d6;">开源权重</span>
+      <span class="tag" style="background:rgba(108,58,255,0.12);border:1px solid rgba(108,58,255,0.3);color:#a855f7;">Agent Swarm</span>
+      <span class="tag" style="background:rgba(255,58,140,0.12);border:1px solid rgba(255,58,140,0.3);color:#ff3a8c;">多模态</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// HyperFrames seek protocol
+window.__hf = {
+  duration: 189,
+  seek: function(t) {
+    // Show scene based on t
+    document.querySelectorAll('.scene').forEach(function(s) {
+      var st = parseFloat(s.getAttribute('data-start'));
+      var du = parseFloat(s.getAttribute('data-duration'));
+      if(t >= st && t < st + du) {
+        s.style.display = 'flex';
+      } else {
+        s.style.display = 'none';
+      }
+    });
+    var mins = Math.floor(t/60);
+    var secs = Math.floor(t%60);
+    var total_m = Math.floor(189/60);
+    var total_s = Math.floor(189%60);
+    document.querySelector('.time-display').textContent =
+      String(mins).padStart(2,'0')+':'+String(secs).padStart(2,'0')+' / '+
+      String(total_m).padStart(2,'0')+':'+String(total_s).padStart(2,'0');
+  }
+};
+window.__timelines = window.__timelines || {};
+window.__timelines['main'] = {
+  time: function(t) { window.__hf.seek(t); },
+  play: function(){}, pause: function(){}, eventCallback: function(){}, from: function(){return this;}, to: function(){return this;}, add: function(){return this;}
+};
+window.__timelines['k26'] = window.__timelines['main'];
+</script>
+</body>
+</html>
